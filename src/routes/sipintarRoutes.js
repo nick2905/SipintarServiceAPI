@@ -37,7 +37,9 @@ import {
     addCooperationPulsaOrder,
     loginRequiredCostumers,
     getCanteentOrderCustomer,
-    loginRequiredAdmin
+    loginRequiredAdmin,
+    getCooperationOrderCustomer,
+    getCooperationPulsaOrder
 } from "../controllers/UserControllers";
 import {
     addDelRoom,
@@ -88,8 +90,10 @@ const routes = async (app) => {
     app.route('/admin/cooperation/order/product/:idCooperationOrder')
         .get(loginRequiredAdmin, getOneProductCooperationOrder)
 
+
     app.route('/admin/cooperation/order/product/costumercancel')
         .get(loginRequiredAdmin, getAllProductCooperationCancelSubmission)
+
 
     app.route('/admin/cooperation/order/product/costumercancel/:idCooperationOrder')
         .put(loginRequiredAdmin, acceptCancelProductCooperationOrder)
@@ -149,7 +153,6 @@ const routes = async (app) => {
 
     app.route('/admin/itdel/room/booking/:idDelRoomBooking')
         .put(loginRequiredAdmin, acceptDelRoomBooking)
-
 }
 
 export default routes;
