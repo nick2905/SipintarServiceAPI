@@ -8,8 +8,6 @@ import cors from 'cors';
 const app = express();
 app.use(cors());
 
-const PORT = 3000;
-
 // mongoose connection
 mongoose.Promise = global.Promise;
 mongoose
@@ -59,6 +57,6 @@ app.get('/', (req, res) => {
   res.send(`Welcome to Express`);
 });
 
-app.listen(process.env.PORT || PORT, () => {
-  console.log(`Your server is running on port ${PORT}`);
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`Your server is running on ${process.env.PORT});
 });
