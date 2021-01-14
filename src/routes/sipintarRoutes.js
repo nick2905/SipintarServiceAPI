@@ -59,12 +59,12 @@ const routes = async (app) => {
     app.route('/customer/login')
         .post(userLogin)
 
-    
+    // Sudah di Test
     app.route('/customer/canteen/order')
         .post(loginRequiredCostumers, addCanteenProductOrder)
         .get(loginRequiredCostumers, getCanteentOrderCustomer)
 
-    app.route('/customer/canteen/:idCanteenProductOrder')
+    app.route('/customer/canteen/cancel/:idCanteenProductOrder')
         .put(loginRequiredCostumers, cancelCanteenProductOrder)
 
     app.route('/customer/cooperation/order')

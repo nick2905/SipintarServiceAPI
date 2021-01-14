@@ -119,7 +119,7 @@ export const addCanteenProductOrder = async (req, res) => {
 
 export const cancelCanteenProductOrder = async (req, res) => {
     try {
-        await CanteenOrder.findByIdAndUpdate(req.body.idCanteenProductOrder, {
+        await CanteenOrder.findByIdAndUpdate(req.params.idCanteenProductOrder, {
             $set: {
                 isCancelUser: true
             }
