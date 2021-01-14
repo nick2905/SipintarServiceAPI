@@ -63,14 +63,16 @@ const routes = async (app) => {
     app.route('/customer/canteen/order')
         .post(loginRequiredCostumers, addCanteenProductOrder)
         .get(loginRequiredCostumers, getCanteentOrderCustomer)
-
+    // Sudah di Test
     app.route('/customer/canteen/cancel/:idCanteenProductOrder')
         .put(loginRequiredCostumers, cancelCanteenProductOrder)
 
+    // Sudah di Test
     app.route('/customer/cooperation/order')
         .post(loginRequiredCostumers, addCooperationProductOrder)
         .get(loginRequiredCostumers, getCooperationOrderCustomer)
 
+    
     app.route('/customer/cooperation/order/:idCooperationOrder')
         .put(loginRequiredCostumers, cancelCooperationProductOrder)
 

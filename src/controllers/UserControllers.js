@@ -163,6 +163,7 @@ export const cancelCooperationProductOrder = async (req, res) => {
                 isCancelUser: true
             }
         });
+        return res.status(200).json({message: 'Succassfull cancel order'});
     } catch (error) {
         console.log(error);
         return res.status(401).json({ message: 'Maaf ada kesalahan' });
