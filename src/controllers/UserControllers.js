@@ -5,11 +5,13 @@ import { UserSchema } from "../models/UserModel";
 import { CanteenOrderSchema } from "../models/CanteenOrderModel";
 import { CooperationOrderSchema } from "../models/CooperationOrderModel";
 import { PulsaOrderSchema } from "../models/PulsaOrderModel";
+import { DelRoomBookingSchema } from "../models/DelRoomBookingModel";
 
 const User = mongoose.model('User', UserSchema);
 const CanteenOrder = mongoose.model('CanteenOrder', CanteenOrderSchema);
 const CooperationOrder = mongoose.model('CooperationOrder', CooperationOrderSchema);
 const PulsaOrder = mongoose.model('PulsaOrder', PulsaOrderSchema);
+const DelRoomBooking = mongoose.model('DelRoomBooking', DelRoomBookingSchema)
 
 export const loginRequiredCostumers = (req, res, next) => {
     //console.log("User ->" + req.user.roleId);
@@ -163,7 +165,7 @@ export const cancelCooperationProductOrder = async (req, res) => {
                 isCancelUser: true
             }
         });
-        return res.status(200).json({message: 'Succassfull cancel order'});
+        return res.status(200).json({ message: 'Succassfull cancel order' });
     } catch (error) {
         console.log(error);
         return res.status(401).json({ message: 'Maaf ada kesalahan' });
@@ -187,6 +189,28 @@ export const addCooperationPulsaOrder = async (req, res) => {
         const newPulsaOrder = new PulsaOrder(req.body);
         await newPulsaOrder.save();
         return res.status(200).json({ message: 'Successfull add order' });
+    } catch (error) {
+        console.log(error);
+        return res.status(401).json({ message: 'Maaf ada kesalahan' });
+    }
+}
+
+//Del Room Booking
+export const addDelRoomBooking = async (req, res) => {
+    try {
+        const newDelRoomBooking = new DelRoomBooking(req.body);
+        await newDelRoomBooking.save();
+        return res.status(200).json({ message: 'Successfull add Booking' });
+    } catch (error) {
+        console.log(error);
+        return res.status(401).json({ message: 'Maaf ada kesalahan' });
+    }
+}
+
+export const getDelRoomBookingByUser = async (req, res) => {
+    try {
+        const findAllDelRoomByUser = await DelRoomBooking.find({ idUser: req.params.idUser });
+        return res.status(200).json(findAllDelRoomByUser);
     } catch (error) {
         console.log(error);
         return res.status(401).json({ message: 'Maaf ada kesalahan' });

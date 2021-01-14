@@ -13,7 +13,9 @@ export const DelRoomBookingSchema = new Schema({
     },
     dateBooking: {
         type: Date,
-        required: true
+        //Testing date now
+        default: Date.now
+        //required: true
     },
     reasonBooking: {
         type: String,

@@ -2,8 +2,7 @@ import {
     addCanteenProduct,
     removeCanteenProduct,
     getAllProduct,
-    getAllProductCanteenOrderActive,
-    getAllProductOrderCanteenCancelSubmission,
+    getAllProductCanteenOrder,
     getOneProductOrderById,
     acceptCancelProductOrder,
     finishProductOrder,
@@ -17,7 +16,6 @@ import {
     removeCooperationProduct,
     getAllCooperationProduct,
     getAllOrderCooperation,
-    getAllProductCooperationCancelSubmission,
     getOneProductCooperationOrder,
     acceptCancelProductCooperationOrder,
     finishCooperationOrder,
@@ -39,13 +37,16 @@ import {
     getCanteentOrderCustomer,
     loginRequiredAdmin,
     getCooperationOrderCustomer,
-    getCooperationPulsaOrder
+    getCooperationPulsaOrder,
+    addDelRoomBooking,
+    getDelRoomBookingByUser
 } from "../controllers/UserControllers";
 import {
     addDelRoom,
     removeDelRoom,
     getAllDelRoom,
-    acceptDelRoomBooking
+    acceptDelRoomBooking,
+    getAllDelRoomBooking
 } from "../controllers/ITDelControllers";
 
 const routes = async (app) => {
@@ -62,6 +63,7 @@ const routes = async (app) => {
     app.route('/customer/canteen/order')
         .post(loginRequiredCostumers, addCanteenProductOrder)
         .get(loginRequiredCostumers, getCanteentOrderCustomer)
+
     // Sudah di Test
     app.route('/customer/canteen/cancel/:idCanteenProductOrder')
         .put(loginRequiredCostumers, cancelCanteenProductOrder)
@@ -80,13 +82,22 @@ const routes = async (app) => {
         .post(loginRequiredCostumers, addCooperationPulsaOrder)
         .get(loginRequiredCostumers, getCooperationPulsaOrder)
 
+    // IT Del Hitpoint
+    // Sudah di Test Local
+    app.route('/customer/itdel/room/booking')
+        .post(loginRequiredCostumers, addDelRoomBooking)
+    
+    // Sudah di Test Local
+    app.route('/customer/itdel/room/booking/:idUser')
+        .get(loginRequiredCostumers, getDelRoomBookingByUser)
+
     // Admin Hit Point
     // Cooperation Modul
     // Sudah di Test
     app.route('/admin/cooperation/product')
         .get(loginRequiredAdmin, getAllCooperationProduct)
         .post(loginRequiredAdmin, addCooperationProduct)
-    
+
     // Sudah di Test
     app.route('/admin/cooperation/product/:idCooperationProduct')
         .delete(loginRequiredAdmin, removeCooperationProduct)
@@ -107,15 +118,19 @@ const routes = async (app) => {
     app.route('/admin/cooperation/order/product/finish/:idCooperationOrder')
         .post(loginRequiredAdmin, finishCooperationOrder)
 
+    // Sudah di Test
     app.route('/admin/cooperation/order/pulsa')
         .get(loginRequiredAdmin, getOrderPulsaActive)
 
+    // Sudah di Test
     app.route('/admin/cooperation/order/pulsa/detail/:idOrderPulsa')
         .get(loginRequiredAdmin, getOneOrder)
 
+    // Sudah di Test
     app.route('/admin/cooperation/order/pulsa/:idOrderPulsa')
         .put(loginRequiredAdmin, putStatusFinish)
 
+    // Sudah di Test
     app.route('/admin/cooperation/order/pulsa/finish/')
         .get(loginRequiredAdmin, getOrderPulsaFinish)
 
@@ -138,18 +153,19 @@ const routes = async (app) => {
     app.route('/admin/canteen/room/:idCanteenRoom')
         .delete(loginRequiredAdmin, removeCanteenRoom)
 
+    // Sudah di Test
     app.route('/admin/canteen/order')
-        .get(loginRequiredAdmin, getAllProductCanteenOrderActive)
+        .get(loginRequiredAdmin, getAllProductCanteenOrder)
 
+    // Sudah di Test
     app.route('/admin/canteen/order/:idProductOrder')
         .get(loginRequiredAdmin, getOneProductOrderById)
 
+    // Sudah di Test
     app.route('/admin/canteen/order/finish/:idProductOrder')
         .put(loginRequiredAdmin, finishProductOrder)
 
-    app.route('/admin/canteen/order/canceluser')
-        .get(loginRequiredAdmin, getAllProductOrderCanteenCancelSubmission)
-
+    // Sudah di Test
     app.route('/admin/canteen/order/canceluser/:idProductOrder')
         .put(loginRequiredAdmin, acceptCancelProductOrder)
 
@@ -163,8 +179,12 @@ const routes = async (app) => {
     app.route('/admin/itdel/room/:idDelRoom')
         .delete(loginRequiredAdmin, removeDelRoom)
 
-    app.route('/admin/itdel/room/booking/:idDelRoomBooking')
+
+    app.route('/admin/itdel/room/booking/order/:idDelRoomBooking')
         .put(loginRequiredAdmin, acceptDelRoomBooking)
+
+    app.route('/admin/itdel/room/booking')
+        .get(loginRequiredAdmin, getAllDelRoomBooking)
 }
 
 export default routes;

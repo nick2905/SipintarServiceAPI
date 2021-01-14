@@ -43,9 +43,9 @@ export const getAllProduct = async (req, res) => {
 }
 
 // Order modul
-export const getAllProductCanteenOrderActive = async (req, res) => {
+export const getAllProductCanteenOrder = async (req, res) => {
     try {
-        const findAllProductOrder = await CanteenOrder.find({ isFinished: false });
+        const findAllProductOrder = await CanteenOrder.find();
         return res.status(200).json(findAllProductOrder);
     } catch (error) {
         console.log(error);
@@ -97,6 +97,7 @@ export const finishProductOrder = async (req, res) => {
                 isFinished: true
             }
         });
+        return res.status(200).json({message:'Successfull Finish Order'});
     } catch (error) {
         console.log(error);
         return res.status(401).json({ message: 'Maaf ada kesalahan' });

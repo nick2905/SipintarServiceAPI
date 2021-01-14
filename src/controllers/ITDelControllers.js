@@ -45,7 +45,17 @@ export const acceptDelRoomBooking = async (req, res) => {
             $set: {
                 isConfirm: true
             }
-        })
+        });
+        return res.status(200).json({ message: 'Successfull Accept Request' });
+    } catch (error) {
+        console.log(error);
+        return res.status(401).json({ message: 'Maaf ada kesalahan' });
+    }
+}
+export const getAllDelRoomBooking = async (req, res) => {
+    try {
+        const findAllDelRoomBooking = await DelRoomBooking.find();
+        return res.status(200).json(findAllDelRoomBooking);
     } catch (error) {
         console.log(error);
         return res.status(401).json({ message: 'Maaf ada kesalahan' });
