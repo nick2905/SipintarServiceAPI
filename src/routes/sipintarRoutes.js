@@ -99,10 +99,11 @@ const routes = async (app) => {
     app.route('/admin/cooperation/order/product/:idCooperationOrder')
         .get(loginRequiredAdmin, getOneProductCooperationOrder)
 
-    
+    // Sudah di Test
     app.route('/admin/cooperation/order/product/cancel/:idCooperationOrder')
         .put(loginRequiredAdmin, acceptCancelProductCooperationOrder)
 
+    // Sudah di Test
     app.route('/admin/cooperation/order/product/finish/:idCooperationOrder')
         .post(loginRequiredAdmin, finishCooperationOrder)
 

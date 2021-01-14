@@ -92,7 +92,7 @@ export const acceptCancelProductCooperationOrder = async (req, res) => {
 export const finishCooperationOrder = async (req, res) => {
     try {
         // Using parameter idCooperationOrder
-        await CooperationOrder.findByIdAndUpdate(req.body.idCooperationOrder, {
+        await CooperationOrder.findByIdAndUpdate(req.params.idCooperationOrder, {
             $set: {
                 isFinished: true
             }
