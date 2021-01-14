@@ -16,7 +16,7 @@ import {
     addCooperationProduct,
     removeCooperationProduct,
     getAllCooperationProduct,
-    getAllOrderCooperationActive,
+    getAllOrderCooperation,
     getAllProductCooperationCancelSubmission,
     getOneProductCooperationOrder,
     acceptCancelProductCooperationOrder,
@@ -93,15 +93,14 @@ const routes = async (app) => {
 
     // Sudah di Test
     app.route('/admin/cooperation/order/product')
-        .get(loginRequiredAdmin, getAllOrderCooperationActive);
+        .get(loginRequiredAdmin, getAllOrderCooperation);
 
+    // Sudah di Test
     app.route('/admin/cooperation/order/product/:idCooperationOrder')
         .get(loginRequiredAdmin, getOneProductCooperationOrder)
 
-    app.route('/admin/cooperation/order/product/costumercancel')
-        .get(loginRequiredAdmin, getAllProductCooperationCancelSubmission)
-
-    app.route('/admin/cooperation/order/product/costumercancel/:idCooperationOrder')
+    
+    app.route('/admin/cooperation/order/product/cancel/:idCooperationOrder')
         .put(loginRequiredAdmin, acceptCancelProductCooperationOrder)
 
     app.route('/admin/cooperation/order/product/finish/:idCooperationOrder')
@@ -110,7 +109,7 @@ const routes = async (app) => {
     app.route('/admin/cooperation/order/pulsa')
         .get(loginRequiredAdmin, getOrderPulsaActive)
 
-    app.route('/admin/cooperation/order/pulsa/:idOrderPulsa')
+    app.route('/admin/cooperation/order/pulsa/detail/:idOrderPulsa')
         .get(loginRequiredAdmin, getOneOrder)
 
     app.route('/admin/cooperation/order/pulsa/:idOrderPulsa')

@@ -14,6 +14,7 @@ mongoose
   .connect(
     'mongodb://nicolas:nicolas@sipintaritdel-shard-00-00.v07hc.mongodb.net:27017,sipintaritdel-shard-00-01.v07hc.mongodb.net:27017,sipintaritdel-shard-00-02.v07hc.mongodb.net:27017/SipintarDB?ssl=true&replicaSet=atlas-d0umx0-shard-0&authSource=admin&retryWrites=true&w=majority',
     {
+      useFindAndModify: false,
       useNewUrlParser: true,
       useUnifiedTopology: true,
     }

@@ -42,9 +42,9 @@ export const getAllCooperationProduct = async (req, res) => {
 }
 
 // Order modul
-export const getAllOrderCooperationActive = async (req, res) => {
+export const getAllOrderCooperation= async (req, res) => {
     try {
-        const findAllProductOrder = await CooperationOrder.find({ isFinished: false });
+        const findAllProductOrder = await CooperationOrder.find();
         return res.status(200).json(findAllProductOrder);
     } catch (error) {
         console.log(error);
@@ -55,6 +55,7 @@ export const getAllOrderCooperationActive = async (req, res) => {
 export const getAllProductCooperationCancelSubmission = async (req, res) => {
     try {
         const findAllroductCooperationCancel = await CooperationOrder.find({ isCancelUser: true });
+        console.log("value findAllroductCooperationCancel ->" + findAllroductCooperationCancel);
         return res.status(200).json(findAllroductCooperationCancel);
     } catch (error) {
         console.log(error);
