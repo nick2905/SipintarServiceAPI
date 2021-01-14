@@ -65,7 +65,7 @@ export const getAllProductCooperationCancelSubmission = async (req, res) => {
 export const getOneProductCooperationOrder = async (req, res) => {
     try {
         // Using Parameter idCooperationOrder
-        const findOneCooperationOrder = await CooperationOrder(req.params.idCooperationOrder);
+        const findOneCooperationOrder = await CooperationOrder.findById(req.params.idCooperationOrder);
         return res.status(200).json(findOneCooperationOrder);
     } catch (error) {
         console.log(error);

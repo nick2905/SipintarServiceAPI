@@ -55,7 +55,6 @@ const routes = async (app) => {
         .post(userRegister)
 
     // Sudah di Test
-    //ctrl + klik kiri
     app.route('/customer/login')
         .post(userLogin)
 
@@ -72,25 +71,27 @@ const routes = async (app) => {
         .post(loginRequiredCostumers, addCooperationProductOrder)
         .get(loginRequiredCostumers, getCooperationOrderCustomer)
 
-    
+    // Sudah di Test
     app.route('/customer/cooperation/order/:idCooperationOrder')
         .put(loginRequiredCostumers, cancelCooperationProductOrder)
 
+    // Sudah di Test
     app.route('/customer/cooperation/pulsa')
         .post(loginRequiredCostumers, addCooperationPulsaOrder)
         .get(loginRequiredCostumers, getCooperationPulsaOrder)
 
-    //Admin Hit Point
+    // Admin Hit Point
     // Cooperation Modul
-    //Sudah di Test
+    // Sudah di Test
     app.route('/admin/cooperation/product')
         .get(loginRequiredAdmin, getAllCooperationProduct)
         .post(loginRequiredAdmin, addCooperationProduct)
     
-        //Sudah di Test
+    // Sudah di Test
     app.route('/admin/cooperation/product/:idCooperationProduct')
         .delete(loginRequiredAdmin, removeCooperationProduct)
 
+    // Sudah di Test
     app.route('/admin/cooperation/order/product')
         .get(loginRequiredAdmin, getAllOrderCooperationActive);
 
