@@ -23,6 +23,8 @@ export const UserSchema = new Schema({
         type: String,
         required: true,
     },
+    // nomor 2 untuk customer
+    // nomor 1 untuk admin
     roleId: {
         type: Number,
         required: true,

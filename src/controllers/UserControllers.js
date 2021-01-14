@@ -32,6 +32,7 @@ export const loginRequiredAdmin = (req, res, next) => {
 //Authentication
 export const userRegister = async (req, res) => {
     try {
+        //ctrl + klik kiri
         const newUser = new User(req.body);
         var salt = crypto.randomBytes(16).toString('hex');
         var hash = crypto.createHmac("sha256", salt)

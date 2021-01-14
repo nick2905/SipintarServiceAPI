@@ -50,12 +50,16 @@ import {
 
 const routes = async (app) => {
     // Buyer Hit point
+    // Sudah di Test
     app.route('/customer/auth/register')
         .post(userRegister)
 
+    // Sudah di Test
+    //ctrl + klik kiri
     app.route('/customer/login')
         .post(userLogin)
 
+    
     app.route('/customer/canteen/order')
         .post(loginRequiredCostumers, addCanteenProductOrder)
         .get(loginRequiredCostumers, getCanteentOrderCustomer)
@@ -76,13 +80,14 @@ const routes = async (app) => {
 
     //Admin Hit Point
     // Cooperation Modul
+    //Sudah di Test
     app.route('/admin/cooperation/product')
         .get(loginRequiredAdmin, getAllCooperationProduct)
         .post(loginRequiredAdmin, addCooperationProduct)
-
+    
+        //Sudah di Test
     app.route('/admin/cooperation/product/:idCooperationProduct')
         .delete(loginRequiredAdmin, removeCooperationProduct)
-
 
     app.route('/admin/cooperation/order/product')
         .get(loginRequiredAdmin, getAllOrderCooperationActive);
@@ -90,10 +95,8 @@ const routes = async (app) => {
     app.route('/admin/cooperation/order/product/:idCooperationOrder')
         .get(loginRequiredAdmin, getOneProductCooperationOrder)
 
-
     app.route('/admin/cooperation/order/product/costumercancel')
         .get(loginRequiredAdmin, getAllProductCooperationCancelSubmission)
-
 
     app.route('/admin/cooperation/order/product/costumercancel/:idCooperationOrder')
         .put(loginRequiredAdmin, acceptCancelProductCooperationOrder)
@@ -114,17 +117,21 @@ const routes = async (app) => {
         .get(loginRequiredAdmin, getOrderPulsaFinish)
 
     //Canteen Modul
+    // Sudah di Test
     app.route('/admin/canteen/product')
         .get(loginRequiredAdmin, getAllProduct)
         .post(loginRequiredAdmin, addCanteenProduct)
 
+    // Sudah di Test
     app.route('/admin/canteen/product/:idProduct')
         .delete(loginRequiredAdmin, removeCanteenProduct)
 
+    // Sudah di Test
     app.route('/admin/canteen/room')
         .get(loginRequiredAdmin, getAllRoom)
         .post(loginRequiredAdmin, addCanteenRoom)
 
+    // Sudah di Test
     app.route('/admin/canteen/room/:idCanteenRoom')
         .delete(loginRequiredAdmin, removeCanteenRoom)
 
@@ -144,10 +151,12 @@ const routes = async (app) => {
         .put(loginRequiredAdmin, acceptCancelProductOrder)
 
     // IT Del Modul
+    // Sudah Di Test
     app.route('/admin/itdel/room')
         .get(loginRequiredAdmin, getAllDelRoom)
         .post(loginRequiredAdmin, addDelRoom)
 
+    // Sudah Di Test
     app.route('/admin/itdel/room/:idDelRoom')
         .delete(loginRequiredAdmin, removeDelRoom)
 
